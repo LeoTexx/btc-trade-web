@@ -2,6 +2,7 @@ import { useCallback, useState } from "react";
 import { Toaster } from "react-hot-toast";
 import { useSSE } from "./hooks";
 import { Success, Form } from "./components";
+import { API_URL } from "./services";
 
 function App() {
   const [paymentData, setPaymentData] = useState<InvoicePaidResponse | null>(
@@ -14,7 +15,7 @@ function App() {
     }
   }, []);
 
-  useSSE("http://localhost:3000/events", onEvent);
+  useSSE(`${API_URL}/events`, onEvent);
 
   return (
     <main className="w-screen h-screen flex items-center justify-center   bg-gradient-to-b from-[#25d8bd] to-[#ffc95e]">
